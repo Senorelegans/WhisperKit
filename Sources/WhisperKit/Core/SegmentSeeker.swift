@@ -7,7 +7,7 @@ import Foundation
 import Tokenizers
 
 @available(macOS 13, iOS 16, watchOS 10, visionOS 1, *)
-public protocol SegmentSeeking {
+public open class SegmentSeeker: SegmentSeeking {
     func findSeekPointAndSegments(
         decodingResult: DecodingResult,
         options: DecodingOptions,
@@ -20,7 +20,7 @@ public protocol SegmentSeeking {
         tokenizer: WhisperTokenizer
     ) -> (Int, [TranscriptionSegment]?)
 
-    func addWordTimestamps(
+public func addWordTimestamps(
         segments: [TranscriptionSegment],
         alignmentWeights: MLMultiArray,
         tokenizer: WhisperTokenizer,
